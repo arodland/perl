@@ -1,0 +1,83 @@
+=head1 NAME
+
+perldeprecated - Deprecated and Removed Language Features
+
+=head1 DESCRIPTION
+
+Words boring words
+
+=head1 RATIONALE (temporary section for editors)
+
+Yes, this duplicates a lot of material from L<perldiag>, especially in its
+initial form, but I'm trying to make it a lot more useful, with the information
+categorized, all in one place, and with information on when deprecations were
+applied, and when features were removed. I want to link to docs on how to do it
+right whenever possible. And accidental/removed/etc. features without warnings
+in perldiag are fair game here too. Finally, I would like the POD for topics
+that have been affected by deprecations to link back here. For example,
+L<perlvar> should have a section that mentions C<$*> and C<$#> and links to the
+L</"Deprecated Variables"> section of this doc, so that people searching for
+those vars in perlvar don't hit a dead-end.
+
+=head1 A Note on Deprecation Warnings
+
+Disabled by default before version X (enabled with C<use warnings> or C<-w>),
+enabled by default afterwards. Warnings category is C<deprecated> in perls with
+warnings categories.
+
+=head1 Deprecated Syntax
+
+=head2 Array or hash name without C<@> or C<%>
+
+Old versions of Perl would let you write things like
+
+    push array, 'Value';
+
+and the bareword would be interpreted as the name of an array or a hash in the
+current package, depending on the operation. Deprecated since XXX.
+
+=head2 C<my $x if 0>
+
+Never officially blessed; replaced by C<state> variables in Perl 5.10.0; see
+L<perlsub/"Persistent Private Variables">. For compatibility with older versions
+of Perl, simply use a lexical variable in an outer scope. Deprecated since
+version 5.10.0.
+
+=head2 Here-document C<E<lt>E<lt>> followed by newline
+
+The construct C<E<lt>E<lt>> at the end of a line is interpreted as
+C<E<lt>E<lt>""> (a here-document ending at a blank line), but we prefer that you
+say so explicitly. See L<perlop/"Quote-Like Operators"> and 
+L<perlop/"Gory details of parsing quoted constructs">. Deprecated since XXX.
+
+=head2 Format list without commas
+
+The arguments in an argument line of a format should have commas between them.
+See L<perlform/"Specifying Values">. Deprecated since XXX.
+
+=head1 Deprecated Functions and Parameters
+
+=head2 C<defined(@array)> and C<defined(%hash)>
+
+Passing an array or a hash to C<defined> isn't useful. If you want to find out
+whether an array or hash is non-empty, use C<if (@array)> or C<if (%hash)>.
+Deprecated since XXX.
+
+=head2 C<chdir('')> and C<chdir(undef)>
+
+To change to the user's home directory, call C<chdir> with no argument:
+C<chdir()>. 
+=head1 Deprecated Variables
+
+=head2 $#
+
+=head2 $*
+
+=head1 Deprecated Command-Line Options
+
+=head1 Deprecated Pragmata
+
+=head2 use attrs
+
+Replaced by C<: attributes>. See L<perlsub/"Subroutine Attributes">. Deprecated
+since XXX.
