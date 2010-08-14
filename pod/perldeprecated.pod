@@ -67,6 +67,7 @@ Deprecated since XXX.
 
 To change to the user's home directory, call C<chdir> with no argument:
 C<chdir()>. 
+
 =head1 Deprecated Variables
 
 =head2 $#
